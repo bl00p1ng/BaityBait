@@ -1,0 +1,6 @@
+[functions]
+  # Directorio para las Netlify Functions
+  directory = "netlify/functions/"
+
+  # Especifica `esbuild` para la construccion de la funcion
+  node_bundler = "esbuild"

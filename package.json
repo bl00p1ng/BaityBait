@@ -1,0 +1,17 @@
+{
+  "name": "baitybait",
+  "version": "1.0.0",
+  "description": "Un sitio web sobre el Youtuber y Streamer Español BaityBait",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bl00p1ng/BaityBait.git"
+  },
+  "keywords": [],
+  "author": "Andrés López <andresfelipe@duck.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bl00p1ng/BaityBait/issues"
+  },
+  "homepage": "https://github.com/bl00p1ng/BaityBait#readme"
+}
