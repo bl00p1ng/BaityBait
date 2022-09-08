@@ -1,6 +1,5 @@
 // ********** VARIABLES GLOBALES **********
 const API_URL = 'https://youtube138.p.rapidapi.com/channel/videos/?id=UCNnNCBgckxzqIh1Txw5cgSg';
-let API_KEY;
 
 // ********** SELECTORES **********
 const lastVideos = document.querySelector('#last-videos');
@@ -8,11 +7,17 @@ const lastVideos = document.querySelector('#last-videos');
 // ********** FUNCIONES **********
 // Obtener la API KEY
 function getAPIKey() {
+    let api_key;
+
     fetch(".netlify/functions/api")
-    .then(response => response.json())
-    .then(json => {
-        API_KEY = json.api;
-    })
+        .then(response => response.json())
+        .then(json => {
+            api_key = json.api;
+            
+            return api_key
+        })
+        // Una vez se tiene el token, consultar API
+        .then(api_key => fetchData(API_URL, api_key))
 }
 
 // Obtener los datos de la API
@@ -25,6 +30,7 @@ function fetchData(URL, API_KEY) {
         }
     })
     .then(response => response.json())
+    // Una vez e tiene una respuesta de la API, mostrar los datos
     .then(response => showData(response))
     .catch(err => console.error(err));
 }
@@ -77,17 +83,8 @@ function showError() {
 
 // ********** ENTRY POINT **********
 function app() {
-    // Obtener la API KEY de Netlify
-    // getAPIKey()
-
-    // Si se obtiene la API KEY exitosamente, hacer la petición y mostrar los datos.
-    if (API_KEY) {
-        fetchData()
-    }
-    // Si ocurre un error al obtener la API KEY, mostrar un error
-    else {
-        showError()
-    }
+    // Obtener la API KEY de Netlify y mostar los datos
+    getAPIKey()
 }
 
 // Iniciar la App cuando el contenido termine de cargar
