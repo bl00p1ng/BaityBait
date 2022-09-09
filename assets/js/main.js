@@ -30,7 +30,7 @@ function fetchData(URL, API_KEY) {
         }
     })
     .then(response => response.json())
-    // Una vez e tiene una respuesta de la API, mostrar los datos
+    // Una vez se tiene una respuesta de la API, mostrar los datos
     .then(response => showData(response))
     .catch(err => console.error(err));
 }
